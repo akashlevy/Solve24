@@ -8,10 +8,15 @@ Allowed operations: addition, subtraction, multiplication, division, exponentiat
 
 ### Example
 Number: 1234
+
 Possible solution: (1 * 2) * (3 * 4) = 24
+
 Another solution: ((1 + 2) + 3) * 4 = 24
+
 Another solution: (2 ^ 3) * (4 - 1) = 24
+
 Another solution: (4 * 3) * (2 / 1) = 24
+
 etc.
 
 ## Solver
