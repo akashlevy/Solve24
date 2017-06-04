@@ -1,3 +1,5 @@
+<img src="24.png" alt="24 logo" title="24" align="right"/>
+
 # Solve24
 Solves the game 24 using brute force
 
