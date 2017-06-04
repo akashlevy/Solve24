@@ -4,7 +4,7 @@
 Solves the game 24 using brute force
 
 ## How to play 24
-Given a 4-digit number, manipulate the numbers using the allowed operations to come to 24.
+Given a 4-digit number, manipulate the digits using the allowed operations to come to 24.
 
 Allowed operations: addition, subtraction, multiplication, division, exponentiation
 
