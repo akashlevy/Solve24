@@ -22,8 +22,8 @@ Another solution: (4 * 3) * (2 / 1) = 24
 etc.
 
 ## Solver
-This program is a solver for 24 that brute forces all possible results. It has three modes
-depending on which lines you decomment.
+This program is a Python3 solver for 24 that brute forces all possible results. It has three modes
+depending on which lines you uncomment.
 
 ### Mode 1
 Get the number of solutions for all possible puzzles
@@ -34,3 +34,6 @@ properly parenthesized format)
 
 ### Mode 3
 Get all the solutions for a single 4-digit number
+
+### Mode 4
+Determine how many 4-digit numbers have a solution containing each digit
