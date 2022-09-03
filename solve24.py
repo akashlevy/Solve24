@@ -5,14 +5,14 @@
 OPS = [lambda a, b: a + b,
        lambda a, b: a - b,
        lambda a, b: a * b,
-       lambda a, b: a / b if a % b == 0 else None, # ignore cases where not divisible
-       lambda a, b: a ** b if a in [0, 1] or b < 10 else None] # ignore exp > 9, won't get to 24
+       lambda a, b: a // b if a % b == 0 else None, # ignore cases where not divisible
+       lambda a, b: a ** b if a in [0, 1] or b < 9 else None] # ignore exp > 9, won't get to 24
 OP_NAMES = ['+', '-', '*', '/', '^']
 
 
 def solve24(num):
     '''Returns solution strings corresponding to the 24 game via brute force'''
-    digits = [num / 1000, (num / 100) % 10, (num / 10) % 10, num % 10]
+    digits = [num // 1000, (num // 100) % 10, (num // 10) % 10, num % 10]
     solutions = set()
 
     for a in range(4):
@@ -35,7 +35,7 @@ def solve24(num):
                                     sol_str = sol_str % (digits[a], opn1, digits[b],
                                                         opn2, digits[c], opn3, digits[d])
                                     solutions.add(sol_str)
-                            except (TypeError, ZeroDivisionError):
+                            except (TypeError, ZeroDivisionError, OverflowError):
                                 pass
                             # Expression type ((a op b) op c) op d
                             try:
@@ -44,7 +44,7 @@ def solve24(num):
                                     sol_str = sol_str % (digits[a], opn1, digits[b],
                                                         opn2, digits[c], opn3, digits[d])
                                     solutions.add(sol_str)
-                            except (TypeError, ZeroDivisionError):
+                            except (TypeError, ZeroDivisionError, OverflowError):
                                 pass
                             # Expression type (a op (b op c)) op d
                             try:
@@ -53,7 +53,7 @@ def solve24(num):
                                     sol_str = sol_str % (digits[a], opn1, digits[b],
                                                         opn2, digits[c], opn3, digits[d])
                                     solutions.add(sol_str)
-                            except (TypeError, ZeroDivisionError):
+                            except (TypeError, ZeroDivisionError, OverflowError):
                                 pass
                             # Expression type a op ((b op c) op d)
                             try:
@@ -62,7 +62,7 @@ def solve24(num):
                                     sol_str = sol_str % (digits[a], opn1, digits[b],
                                                         opn2, digits[c], opn3, digits[d])
                                     solutions.add(sol_str)
-                            except (TypeError, ZeroDivisionError):
+                            except (TypeError, ZeroDivisionError, OverflowError):
                                 pass
                             # Expression type a op (b op (c op d))
                             try:
@@ -71,7 +71,7 @@ def solve24(num):
                                     sol_str = sol_str % (digits[a], opn1, digits[b],
                                                         opn2, digits[c], opn3, digits[d])
                                     solutions.add(sol_str)
-                            except (TypeError, ZeroDivisionError):
+                            except (TypeError, ZeroDivisionError, OverflowError):
                                 pass
 
     # Return solutions found
@@ -86,7 +86,6 @@ if __name__ == '__main__':
     # for i in range(10000):
     #    print i, len(solve24(i))
 
-
     # Puzzle game
     # UNCOMMENT LINES BELOW
 
@@ -97,15 +96,15 @@ if __name__ == '__main__':
         if len(sols) == 0:
             continue
         else:
-            print num
-        input_str = raw_input()
+            print(num)
+        input_str = input()
         if input_str in sols:
-            print "Correct!"
+            print("Correct!")
         else:
-            print "Solution not found"
-            print "Solutions:"
+            print("Solution not found")
+            print("Solutions:")
             for sol in solve24(num):
-                print sol
+                print(sol)
 
 
     # Solve puzzle for arbitrary number
@@ -114,3 +113,17 @@ if __name__ == '__main__':
     # for sol in solve24(1234):
     #     print sol
 
+    # Which digit is most commonly found in solutions?
+    # UNCOMMENT LINES BELOW
+
+    # d = {i: 0 for i in range(10)}
+
+    # for i in range(10000):
+    #     if i % 10 == 0:
+    #         print(i)
+    #     sol = ' '.join(solve24(i))
+    #     for j in range(10):
+    #         if str(j) in sol:
+    #             d[j] += 1
+
+    # print(d)
